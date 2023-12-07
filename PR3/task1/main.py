@@ -35,10 +35,6 @@ def file_read(file_name):
         return item
 
 
-max_file = 1000
-# max_file = 200
-
-# проходимся по всем файлам
 items = []
 for i in os.listdir(my_file):
     temp = file_read(os.path.join(my_file, i))
@@ -51,9 +47,9 @@ with open(result_sort, 'w', encoding='utf-8') as f:
 
 
 filter_views = []
-for olimp in items:
-    if olimp['rating'] >= 4:
-        filter_views.append(olimp)
+for place in items:
+    if place['rating'] >= 4:
+        filter_views.append(place)
 
 with open(result_filtered, 'w', encoding='utf-8') as f:
     f.write(json.dumps(filter_views, ensure_ascii=False))
@@ -65,18 +61,18 @@ all_views['sum_views'] = 0
 all_views['min_views'] = 10 ** 9 + 1
 all_views['max_views'] = 0
 std_views = [0]
-for olimp in items:
-     temp = olimp['views']
+for place in items:
+     temp = place['views']
      all_views['sum_views'] += temp
      if all_views['min_views'] > temp:
          all_views['min_views'] = temp
      if all_views['max_views'] < temp:
          all_views['max_views'] = temp
      std_views.append(temp)
-     if olimp['city'] in cities:
-         cities[olimp['city']] += 1
+     if place['city'] in cities:
+         cities[place['city']] += 1
      else:
-         cities[olimp['city']] = 1
+         cities[place['city']] = 1
 all_views['avr_views'] = all_views['sum_views'] / len(items)
 all_views['std_views'] = statistics.stdev(std_views)
 
