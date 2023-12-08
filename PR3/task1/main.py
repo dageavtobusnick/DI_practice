@@ -9,7 +9,7 @@ result_sort = os.path.join(os.path.dirname(__file__), os.path.normpath('result_s
 result_filtered = os.path.join(os.path.dirname(__file__), os.path.normpath('result_filtered.json'))
 result_charact = os.path.join(os.path.dirname(__file__), os.path.normpath('result_charact.json'))
 
-def file_read(file_name):
+def read_file(file_name):
     with open(file_name, encoding='utf-8') as f:
         str_html = ''
         lines = f.readlines()
@@ -37,7 +37,7 @@ def file_read(file_name):
 
 items = []
 for i in os.listdir(my_file):
-    temp = file_read(os.path.join(my_file, i))
+    temp = read_file(os.path.join(my_file, i))
     items.append(temp)
 
 items = sorted(items, key=lambda x: x['views'], reverse=True)
