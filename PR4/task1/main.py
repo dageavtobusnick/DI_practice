@@ -5,7 +5,7 @@ import json
 my_file = os.path.join(os.path.dirname(__file__), os.path.normpath('task_1_var_92_item.text'))
 res_file_sorted = os.path.join(os.path.dirname(__file__), os.path.normpath('res_sort.json'))
 res_file_filter = os.path.join(os.path.dirname(__file__), os.path.normpath('res_filter.json'))
-db_file=os.path.join(os.path.dirname(__file__), os.path.normpath('first'))
+db_file=os.path.join(os.path.dirname(__file__), os.path.normpath('db'))
 
 var=92
 
