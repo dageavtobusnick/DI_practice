@@ -145,14 +145,19 @@ def age_job(collection):
 
 def max_salary_min_age(collection):
     q = [
-        {"$group": {"_id": "age",
-                    "age": {"$min": "$age"},
-                    "max_salary": {"$max": "$salary"}}
-        },
-        {"$match": {"age": 18}}
+            {
+                '$sort': {
+                    'age': -1,
+                    'salary': 1
+                }
+            },
+            {
+                  '$limit': 1
+            }
         ]
     items = []
     for row in collection.aggregate(q):
+        row['_id']=str(row['_id'])
         items.append(row)
 
     with open(res_file_max_salary_min_age, "w", encoding="utf-8") as file:
@@ -160,14 +165,19 @@ def max_salary_min_age(collection):
 
 def min_salary_max_age(collection):
     q = [
-        {"$group": {"_id": "$age",
-                    "age": {"$max": "$age"},
-                    "min_salary": {"$min": "$salary"}}
-        },
-        {"$match": {"age": 65}}
+            {
+                '$sort': {
+                    'age': 1,
+                    'salary': -1
+                }
+            },
+            {
+                  '$limit': 1
+            }
         ]
     items = []
     for row in collection.aggregate(q):
+        row['_id']=str(row['_id'])
         items.append(row)
     with open(res_file_min_salary_max_age, "w", encoding="utf-8") as file:
         file.write(json.dumps(items, ensure_ascii=False))

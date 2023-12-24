@@ -133,14 +133,20 @@ def rating_age_certification(collection):
         file.write(json.dumps(items, ensure_ascii=False))
 
 def max_imdb_votes_min_runtime(collection):
-    q = [
-        {"$group": {"_id": "$age_certification",
-                    "min_runtime": {"$min": "$runtime"},
-                    "max_imdb_votes": {"$max": "$imdb_votes"}}
-        }
+    q =[
+            {
+                '$sort': {
+                    'imdb_votes': 1,
+                    'runtime': -1
+                }
+            },
+            {
+                  '$limit': 1
+            }
         ]
     items = []
     for row in collection.aggregate(q):
+        row['_id']=str(row['_id'])
         items.append(row)
 
     with open(res_file_max_imdb_votes_min_runtime, "w", encoding="utf-8") as file:
