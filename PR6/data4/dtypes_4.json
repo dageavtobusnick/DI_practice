@@ -1,0 +1,1 @@
+{"Unnamed: 0": "uint32", "id": "uint32", "description": "object", "key_skills": "object", "schedule_name": "category", "experience_name": "category", "salary_from": "float32", "salary_to": "float32", "archived": "bool", "area_name": "category", "prof_classes_found": "category"}

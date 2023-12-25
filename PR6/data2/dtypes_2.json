@@ -1,0 +1,1 @@
+{"Unnamed: 0": "uint32", "firstSeen": "category", "msrp": "uint32", "isNew": "bool", "color": "category", "brandName": "category", "modelName": "category", "vf_Seats": "float32", "vf_WheelBaseShort": "float32", "vf_Wheels": "float32", "vf_Windows": "float32"}

@@ -1,0 +1,1 @@
+{"Unnamed: 0": "uint32", "full_name": "object", "pdes": "object", "name": "category", "H": "float32", "diameter": "float32", "albedo": "float32", "diameter_sigma": "float32", "moid": "float32", "sigma_om": "float32", "sigma_w": "float64", "sigma_per": "float64", "class": "category"}
