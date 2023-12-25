@@ -3,27 +3,27 @@ import os
 import pandas as pd
 import json
 
-my_file = os.path.join(os.path.dirname(__file__), os.path.normpath('[5]asteroid.zip'))
-res_file_df=os.path.join(os.path.dirname(__file__), os.path.normpath('df_5.csv'))
-res_file_dtypes=os.path.join(os.path.dirname(__file__), os.path.normpath("dtypes_5.json"))
+my_file = os.path.join(os.path.dirname(__file__), os.path.normpath('job_descriptions.csv'))
+res_file_df=os.path.join(os.path.dirname(__file__), os.path.normpath('df_6.csv'))
+res_file_dtypes=os.path.join(os.path.dirname(__file__), os.path.normpath("dtypes_6.json"))
 pd.set_option("display.max_rows", 20, "display.max_columns", 60)
 
 
 functions.get_memory_stat_no_opt(my_file)
 
 column_dtype = {
-          'full_name': pd.StringDtype(),
-    'pdes': pd.StringDtype(),
-    'name': pd.StringDtype(),
-    'H': pd.StringDtype(),
-    'diameter': pd.StringDtype(), 
-    'albedo': pd.StringDtype(), 
-    'diameter_sigma': pd.StringDtype(),
-    'sigma_om': pd.StringDtype(), 
-    'sigma_w': pd.StringDtype(), 
-    'moid': pd.StringDtype(), 
-    'class': pd.StringDtype(), 
-    'sigma_per': pd.StringDtype()
+          'Experience': pd.StringDtype(),
+    'Qualifications': pd.StringDtype(),
+    'Salary Range': pd.StringDtype(),
+    'location': pd.StringDtype(),
+    'Country': pd.StringDtype(), 
+    'latitude': pd.StringDtype(), 
+    'longitude': pd.StringDtype(),
+    'Work Type': pd.StringDtype(), 
+    'Company Size': pd.StringDtype(), 
+    'Job Posting Date': pd.StringDtype(),
+    'Preference': pd.StringDtype(),
+    'Role': pd.StringDtype(),
 }
 
 has_header = True

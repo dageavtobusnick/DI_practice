@@ -1,0 +1,1 @@
+{"Unnamed: 0": "uint32", "Experience": "category", "Qualifications": "category", "Salary Range": "category", "location": "category", "Country": "category", "latitude": "float32", "longitude": "float32", "Work Type": "category", "Company Size": "uint32", "Job Posting Date": "category", "Preference": "category", "Role": "category"}

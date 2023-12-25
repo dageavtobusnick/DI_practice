@@ -7,11 +7,11 @@ import seaborn as sns
 
 first = os.path.join(os.path.dirname(__file__), os.path.normpath('df_5.csv'))
 types = os.path.join(os.path.dirname(__file__), os.path.normpath('dtypes_5.json'))
-res_file_schedule_name = os.path.join(os.path.dirname(__file__), os.path.normpath('schedule_name.png'))
-res_file_experience_name_v1 = os.path.join(os.path.dirname(__file__), os.path.normpath('experience_name_v1.png'))
-res_file_experience_name = os.path.join(os.path.dirname(__file__), os.path.normpath('experience_name.png'))
-res_file_experience_name_salary_from = os.path.join(os.path.dirname(__file__), os.path.normpath('experience_name_salary_from.png'))
-res_file_salary_from_experience_name = os.path.join(os.path.dirname(__file__), os.path.normpath('salary_from_experience_name.png'))
+res_file_diameter = os.path.join(os.path.dirname(__file__), os.path.normpath('diameter.png'))
+res_file_diameter_v1 = os.path.join(os.path.dirname(__file__), os.path.normpath('diameter_v1.png'))
+res_file_MBA = os.path.join(os.path.dirname(__file__), os.path.normpath('MBA.png'))
+res_file_experience_moid = os.path.join(os.path.dirname(__file__), os.path.normpath('experience_moid .png'))
+res_file_experience_sigma_per = os.path.join(os.path.dirname(__file__), os.path.normpath('experience_sigma_per.png'))
 
 
 pd.set_option("display.max_rows", 20, "display.max_columns", 60)
@@ -41,23 +41,23 @@ dataset.info(memory_usage='deep')
 dataset['diameter_group'] = (dataset['diameter'] // 10) * 10
 grouped_df = dataset.groupby('diameter_group')['diameter'].mean().reset_index()
 plt.plot(grouped_df['diameter_group'], grouped_df['diameter'])
-plt.savefig(res_file_schedule_name)
+plt.savefig(res_file_diameter)
 
 plot = sns.histplot(data=grouped_df, x="diameter", hue="diameter", bins=100)
-plot.get_figure().savefig(res_file_experience_name_v1)
+plot.get_figure().savefig(res_file_diameter_v1)
 
 data = dataset[dataset['class'] != 'MBA']
 d2 = data.groupby(['class'])['class'].count()
 d2 = d2[d2 > len(data) * 0.05]
 circ = d2.plot(kind='pie', y=d2.keys(), autopct='%1.0f%%', title='')
 plt.tight_layout()
-circ.get_figure().savefig(res_file_experience_name)
+circ.get_figure().savefig(res_file_MBA)
 
 plot = sns.boxplot(data=dataset, x='moid', y='class')
-plot.get_figure().savefig(res_file_experience_name_salary_from)
+plot.get_figure().savefig(res_file_experience_moid)
 
 
 plt.figure(figsize=(15,10))
 plt.plot(dataset.groupby(["sigma_per"])['sigma_w'].sum().values, marker='*', color='green')
-plt.savefig(res_file_experience_name_salary_from)
+plt.savefig(res_file_experience_sigma_per)
 
