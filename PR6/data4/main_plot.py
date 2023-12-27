@@ -40,17 +40,22 @@ dataset.info(memory_usage='deep')
 
 plot = sns.histplot(data=dataset, x="schedule_name", hue="schedule_name", bins=100)
 plot.get_figure().savefig(res_file_schedule_name)
+plt.close()
 
 plot = dataset['experience_name'].hist()
 plot.get_figure().savefig(res_file_experience_name_v1)
+plt.close()
 
 d2 = dataset.groupby(['experience_name'])['experience_name'].count()
 circ = d2.plot(kind='pie', y=d2.keys(), autopct='%1.0f%%', title='')
 circ.get_figure().savefig(res_file_experience_name)
+plt.close()
 
 plt.figure(figsize=(15,10))
 plt.plot(dataset.groupby(["experience_name"])['salary_from'].sum().values, marker='*', color='green')
 plt.savefig(res_file_experience_name_salary_from)
+plt.close()
 
-plot = sns.boxplot(data=dataset, x='salary_from', y='experience_name')
+plot = sns.boxplot(data=dataset.sample(1000), x='salary_from', y='experience_name')
 plot.get_figure().savefig(res_file_salary_from_experience_name)
+plt.close()
